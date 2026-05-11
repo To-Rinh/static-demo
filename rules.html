@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fsociety CTF Event - Luật Chơi và Quy Định">
+    <title>Luật Chơi | fsociety CTF Event</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                <div>
+                    <h1>fsociety</h1>
+                    <p class="tagline">CTF Event 2026</p>
+                </div>
+            </div>
+            <nav>
+                <a href="index.html">Homepage</a>
+                <a href="rules.html" class="active">Luật Chơi</a>
+                <a href="leaderboard.html">Xếp Hạng</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Title -->
+            <section>
+                <h1 style="text-align: center; margin-bottom: 0.5rem;">LUẬT CHƠI & QUY ĐỊNH</h1>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+                    Vui lòng đọc kỹ các quy định trước khi tham gia sự kiện
+                </p>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 1: General Rules -->
+            <section class="rules-section">
+                <h2>1. Quy Tắc Chung</h2>
+                
+                <h3>1.1 Thành Phần Đội</h3>
+                <ul>
+                    <li>Mỗi đội phải có <strong>tối thiểu 3 thành viên</strong> và <strong>tối đa 5 thành viên</strong>.</li>
+                    <li>Tất cả thành viên đội phải đăng ký trước ngày <strong>13 tháng 5, 2026</strong>.</li>
+                    <li>Các thành viên không được thay đổi trong suốt thời gian thi đấu.</li>
+                    <li>Mỗi người chỉ được tham gia với một đội duy nhất.</li>
+                </ul>
+
+                <h3>1.2 Thời Gian Thi Đấu</h3>
+                <ul>
+                    <li><strong>Ngày bắt đầu:</strong> 15 tháng 5, 2026, 09:00 AM (Giờ Việt Nam)</li>
+                    <li><strong>Ngày kết thúc:</strong> 17 tháng 5, 2026, 09:00 AM</li>
+                    <li><strong>Tổng thời gian:</strong> 48 giờ liên tục</li>
+                    <li>Những lời giải nộp sau thời hạn sẽ không được công nhận.</li>
+                </ul>
+
+                <h3>1.3 Địa Điểm</h3>
+                <ul>
+                    <li>Sự kiện được tổ chức <strong>online</strong>. Đội có thể tham gia từ bất cứ địa điểm nào.</li>
+                    <li>Đội nên chuẩn bị phòng/không gian yên tĩnh để làm việc.</li>
+                    <li>Mỗi đội phải có <strong>kết nối Internet ổn định</strong> và thiết bị máy tính đủ mạnh.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 2: Challenge Categories -->
+            <section class="rules-section">
+                <h2>2. Danh Mục Challenge (Categories)</h2>
+                
+                <h3>2.1 Web Exploitation (100-500 pts)</h3>
+                <ul>
+                    <li>Tìm và khai thác các lỗ hổng web như SQL Injection, XSS, CSRF, v.v.</li>
+                    <li>Bypass authentication, đánh cắp session, chiếm flag từ database.</li>
+                    <li>Điểm số tăng theo độ khó của challenge.</li>
+                </ul>
+
+                <h3>2.2 Cryptography (100-500 pts)</h3>
+                <ul>
+                    <li>Giải mã các mã hóa: Caesar, Base64, RSA, AES, v.v.</li>
+                    <li>Tìm các yếu tố của hệ thống mã hóa bị lỗi.</li>
+                    <li>Phân tích và phá vỡ các thuật toán yếu.</li>
+                </ul>
+
+                <h3>2.3 Reverse Engineering (100-500 pts)</h3>
+                <ul>
+                    <li>Phân tích và đảo ngược các chương trình compiled (EXE, DLL, Binary).</li>
+                    <li>Tìm kiếm flag ẩn trong code hoặc memory.</li>
+                    <li>Hiểu và vượt qua các cơ chế bảo vệ như obfuscation, packing.</li>
+                </ul>
+
+                <h3>2.4 Forensics (100-500 pts)</h3>
+                <ul>
+                    <li>Phân tích các file bị xóa, hỏng hoặc ẩn giấu.</li>
+                    <li>Kiểm tra logs, metadata, và dấu vết của hoạt động trên hệ thống.</li>
+                    <li>Tìm evidence và flag từ các dữ liệu pháp y.</li>
+                </ul>
+
+                <h3>2.5 Steganography (100-500 pts)</h3>
+                <ul>
+                    <li>Phát hiện và trích xuất dữ liệu ẩn trong hình ảnh, âm thanh, video.</li>
+                    <li>Sử dụng các công cụ steganography để khám phá thông tin bị che giấu.</li>
+                    <li>Phân tích các lớp ẩn và các mã hóa kết hợp.</li>
+                </ul>
+
+                <h3>2.6 Bonus Challenges (250-1000 pts)</h3>
+                <ul>
+                    <li>Các challenge đặc biệt, khó nhất của sự kiện.</li>
+                    <li>Yêu cầu kết hợp nhiều kỹ năng và sáng tạo.</li>
+                    <li>Giải thưởng điểm rất cao, nhưng cũng rất khó chiến thắng.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 3: Scoring System -->
+            <section class="rules-section">
+                <h2>3. Hệ Thống Điểm Số</h2>
+                
+                <h3>3.1 Cách Tính Điểm</h3>
+                <ul>
+                    <li>Mỗi challenge có một số điểm được gán trước (100, 250, 500 pts, v.v.).</li>
+                    <li>Khi giải quyết đúng một challenge, đội nhận đầy đủ điểm của challenge đó.</li>
+                    <li>Không có điểm nửa vời - hoặc đúng hoặc sai, không có phần điểm.</li>
+                    <li>Thời gian giải quyết challenge <strong>không ảnh hưởng</strong> đến điểm số.</li>
+                </ul>
+
+                <h3>3.2 Bảng Xếp Hạng</h3>
+                <ul>
+                    <li>Đội được xếp hạng dựa trên <strong>tổng điểm số</strong> từ cao đến thấp.</li>
+                    <li>Nếu hai đội có cùng điểm số, đội nào giải quyết challenge đó trước sẽ xếp cao hơn (time-based tiebreaker).</li>
+                    <li>Bảng xếp hạng được cập nhật <strong>theo thời gian thực</strong>.</li>
+                    <li>Xem bảng xếp hạng tại trang <a href="leaderboard.html">Xếp Hạng</a> trong suốt sự kiện.</li>
+                </ul>
+
+                <h3>3.3 Điểm Thưởng</h3>
+                <ul>
+                    <li><strong>First Blood:</strong> Đội đầu tiên giải quyết một challenge sẽ nhận <strong>thêm 50 điểm bonus</strong>.</li>
+                    <li><strong>Solve Streak:</strong> Nếu đội giải quyết 5 challenge liên tục không sai lần nào, nhận <strong>100 điểm bonus</strong>.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 4: Rules and Restrictions -->
+            <section class="rules-section">
+                <h2>4. Luật Chơi & Những Hạn Chế</h2>
+                
+                <h3>4.1 Được Phép Làm</h3>
+                <ul>
+                    <li>✅ Sử dụng mọi công cụ hợp pháp: Burp Suite, Wireshark, IDA Pro, v.v.</li>
+                    <li>✅ Tìm kiếm thông tin trên Internet, Stack Overflow, GitHub, v.v.</li>
+                    <li>✅ Sử dụng library và framework công khai.</li>
+                    <li>✅ Thảo luận với các thành viên trong đội của bạn.</li>
+                    <li>✅ Yêu cầu hỗ trợ từ ban tổ chức nếu có vấn đề kỹ thuật.</li>
+                    <li>✅ Sử dụng các công cụ AI như ChatGPT, Github Copilot (hợp lý).</li>
+                </ul>
+
+                <h3>4.2 KHÔNG Được Phép Làm</h3>
+                <ul>
+                    <li>❌ <strong>Không được copy</strong> giải pháp từ các đội khác hoặc từ Internet.</li>
+                    <li>❌ <strong>Không được trao đổi</strong> flag hoặc hint với các đội khác.</li>
+                    <li>❌ <strong>Không được cộng tác</strong> với những người không phải là thành viên đội của bạn.</li>
+                    <li>❌ <strong>Không được tấn công</strong> server CTF bằng DDoS hoặc các phương pháp không công bằng.</li>
+                    <li>❌ <strong>Không được sử dụng</strong> các tài khoản giả mạo hoặc đội khác.</li>
+                    <li>❌ <strong>Không được tiết lộ</strong> challenge details trước khi sự kiện kết thúc.</li>
+                    <li>❌ <strong>Không được dùng</strong> bất cứ exploit nào được cấm (danh sách được công bố trước).</li>
+                </ul>
+
+                <h3>4.3 Luật Công Bằng</h3>
+                <ul>
+                    <li>Tất cả các đội phải tuân thủ luật chơi. Vi phạm sẽ dẫn đến <strong>loại khỏi cuộc thi</strong>.</li>
+                    <li>Ban giám khảo có quyền <strong>từ chối</strong> bất kỳ lời giải nào có dấu hiệu gian lận.</li>
+                    <li>Nếu có tranh cãi, quyết định của ban tổ chức là <strong>cuối cùng</strong> và <strong>không thể phục hồi</strong>.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 5: Submission Rules -->
+            <section class="rules-section">
+                <h2>5. Cách Nộp Giải Pháp</h2>
+                
+                <h3>5.1 Định Dạng Flag</h3>
+                <ul>
+                    <li>Tất cả flag phải có định dạng: <code style="color: var(--accent-color);">flag{...}</code></li>
+                    <li>Flag có thể là chữ cái, số, hoặc ký tự đặc biệt.</li>
+                    <li>Flag <strong>phân biệt chữ hoa/chữ thường</strong>.</li>
+                    <li>Nộp flag sai sẽ không được điểm.</li>
+                </ul>
+
+                <h3>5.2 Quy Trình Nộp</h3>
+                <ul>
+                    <li>Truy cập platform CTF bằng tài khoản đội của bạn.</li>
+                    <li>Tìm challenge mà bạn muốn nộp.</li>
+                    <li>Nhập flag đúng vào ô input và bấm "Submit".</li>
+                    <li>Nếu đúng, bạn sẽ nhận ngay điểm và thông báo thành công.</li>
+                    <li>Nếu sai, bạn có thể thử lại không giới hạn số lần.</li>
+                </ul>
+
+                <h3>5.3 Thời Hạn Nộp</h3>
+                <ul>
+                    <li>Challenge phải được nộp <strong>trước 17/5/2026, 09:00 AM</strong>.</li>
+                    <li>Những nộp sau thời hạn sẽ <strong>không được chấp nhận</strong>.</li>
+                    <li>Không có ngoại lệ về mặt thời gian.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 6: Conduct and Ethics -->
+            <section class="rules-section">
+                <h2>6. Quy Tắc Ứng Xử & Đạo Đức</h2>
+                
+                <h3>6.1 Hành Vi Chuyên Nghiệp</h3>
+                <ul>
+                    <li>Tất cả các thành viên đội phải thể hiện sự tôn trọng và chuyên nghiệp.</li>
+                    <li>Không được sử dụng ngôn từ bạo lực, xúc phạm, hoặc phân biệt đối xử.</li>
+                    <li>Hợp tác công bằng và lành mạnh với các đội khác.</li>
+                </ul>
+
+                <h3>6.2 Bảo Vệ Dữ Liệu</h3>
+                <ul>
+                    <li>Không được chia sẻ hoặc lưu trữ dữ liệu sự kiện sau khi kết thúc.</li>
+                    <li>Không được sử dụng dữ liệu trong mục đích thương mại.</li>
+                    <li>Tôn trọng quyền riêng tư của các thành viên khác.</li>
+                </ul>
+
+                <h3>6.3 Trách Nhiệm Pháp Lý</h3>
+                <ul>
+                    <li>Các thành viên đội chịu trách nhiệm pháp lý về hành động của họ.</li>
+                    <li>Ban tổ chức không chịu trách nhiệm về bất kỳ thiệt hại nào từ sự tham gia.</li>
+                    <li>Tuân thủ tất cả các luật và quy định hiện hành của Việt Nam.</li>
+                </ul>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Rule 7: Frequently Asked Questions -->
+            <section class="rules-section">
+                <h2>7. Câu Hỏi Thường Gặp (FAQ)</h2>
+                
+                <h3 style="margin-top: 2rem;">Q: Có thể thay đổi thành viên đội sau khi đăng ký không?</h3>
+                <p><strong>A:</strong> Không được. Tất cả thành viên phải cố định từ khi đăng ký cho đến khi kết thúc sự kiện.</p>
+
+                <h3>Q: Có thể làm việc từ địa điểm khác nhau không?</h3>
+                <p><strong>A:</strong> Có, sự kiện là online. Các thành viên có thể ở bất cứ đâu miễn là có Internet.</p>
+
+                <h3>Q: Nếu quên flag thì sao?</h3>
+                <p><strong>A:</strong> Nếu bạn giải được challenge nhưng lỡ quên flag, bạn phải giải lại từ đầu. Không có cách để khôi phục.</p>
+
+                <h3>Q: Có thể sử dụng script tự động hoặc bot không?</h3>
+                <p><strong>A:</strong> Không được sử dụng bot để submit flag tự động. Mỗi lần submit phải do người chơi thực hiện.</p>
+
+                <h3>Q: Điểm sẽ được cập nhật khi nào?</h3>
+                <p><strong>A:</strong> Bảng xếp hạng được cập nhật trong vòng 5 phút sau khi submit flag đúng.</p>
+
+                <h3>Q: Có thể xin lỗi và tiếp tục nếu bị phát hiện gian lận không?</h3>
+                <p><strong>A:</strong> Không. Bất kỳ hành vi gian lận nào sẽ dẫn đến loại khỏi cuộc thi ngay lập tức.</p>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Bottom CTA -->
+            <section style="text-align: center; padding: 2rem;">
+                <h2>Bạn đã hiểu rõ luật chơi?</h2>
+                <p style="margin-bottom: 1.5rem;">
+                    Nếu có bất kỳ câu hỏi nào, vui lòng liên hệ với ban tổ chức trước ngày 14 tháng 5.
+                </p>
+                <div>
+                    <a href="index.html" class="btn">Quay Lại Homepage</a>
+                    <a href="leaderboard.html" class="btn btn-secondary">Xem Xếp Hạng</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 fsociety CTF Event. All rights reserved. | "The revolution is coming." | 
+           <a href="#" style="border-bottom: none;">Contact Us</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

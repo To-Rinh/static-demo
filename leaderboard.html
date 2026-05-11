@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fsociety CTF Event - Bảng Xếp Hạng Thời Gian Thực">
+    <title>Xếp Hạng | fsociety CTF Event</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .leaderboard-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .leaderboard-controls input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.8rem;
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        .leaderboard-controls input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .sort-btn {
+            padding: 0.8rem 1.2rem;
+            background-color: var(--secondary-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sort-btn:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+            border-color: var(--accent-color);
+            color: var(--accent-alt);
+        }
+
+        .sort-btn.active {
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            border-color: var(--accent-color);
+        }
+
+        .leaderboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .medal {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .medal.gold { animation: glow-gold 1.5s ease-in-out infinite; }
+        .medal.silver { animation: glow-silver 1.5s ease-in-out infinite; }
+        .medal.bronze { animation: glow-bronze 1.5s ease-in-out infinite; }
+
+        @keyframes glow-gold {
+            0%, 100% { text-shadow: 0 0 5px #FFD700; }
+            50% { text-shadow: 0 0 15px #FFD700; }
+        }
+
+        @keyframes glow-silver {
+            0%, 100% { text-shadow: 0 0 5px #C0C0C0; }
+            50% { text-shadow: 0 0 15px #C0C0C0; }
+        }
+
+        @keyframes glow-bronze {
+            0%, 100% { text-shadow: 0 0 5px #CD7F32; }
+            50% { text-shadow: 0 0 15px #CD7F32; }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                <div>
+                    <h1>fsociety</h1>
+                    <p class="tagline">CTF Event 2026</p>
+                </div>
+            </div>
+            <nav>
+                <a href="index.html">Homepage</a>
+                <a href="rules.html">Luật Chơi</a>
+                <a href="leaderboard.html" class="active">Xếp Hạng</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Title -->
+            <section>
+                <h1 style="text-align: center; margin-bottom: 0.5rem;">XẾP HẠNG THỜI GIAN THỰC</h1>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+                    Cập nhật liên tục - Xem các đội nào đang dẫn đầu
+                </p>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Event Statistics -->
+            <section class="leaderboard-stats">
+                <div class="stat-card">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">Giờ Còn Lại</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Đội Đã Tham Gia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Challenge Tổng</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">215</div>
+                    <div class="stat-label">Flag Đã Submit</div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Search and Sort Controls -->
+            <section>
+                <div class="leaderboard-controls">
+                    <input type="text" id="searchInput" placeholder="🔍 Tìm tên đội..." onkeyup="filterLeaderboard(this.value)">
+                    <div class="sort-buttons">
+                        <button class="sort-btn active" onclick="sortTable(2, 'desc')">Điểm ↓</button>
+                        <button class="sort-btn" onclick="sortTable(1, 'asc')">Tên A-Z</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Table -->
+            <section>
+                <div class="leaderboard-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Tên Đội</th>
+                                <th>Điểm</th>
+                                <th>Challenge Giải</th>
+                                <th>Cập Nhật Lần Cuối</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rank 1 -->
+                            <tr>
+                                <td><span class="medal gold">🏆</span><span class="rank-1">1</span></td>
+                                <td><strong>fsociety</strong></td>
+                                <td><span class="score">3850</span></td>
+                                <td>28 / 42</td>
+                                <td>14:32:15</td>
+                            </tr>
+
+                            <!-- Rank 2 -->
+                            <tr>
+                                <td><span class="medal silver">🥈</span><span class="rank-2">2</span></td>
+                                <td><strong>Elliot's Team</strong></td>
+                                <td><span class="score">3620</span></td>
+                                <td>26 / 42</td>
+                                <td>14:31:42</td>
+                            </tr>
+
+                            <!-- Rank 3 -->
+                            <tr>
+                                <td><span class="medal bronze">🥉</span><span class="rank-3">3</span></td>
+                                <td><strong>Tyrell's Army</strong></td>
+                                <td><span class="score">3310</span></td>
+                                <td>24 / 42</td>
+                                <td>14:30:58</td>
+                            </tr>
+
+                            <!-- Rank 4+ -->
+                            <tr>
+                                <td>4</td>
+                                <td><strong>Darlene Squad</strong></td>
+                                <td><span class="score">3100</span></td>
+                                <td>22 / 42</td>
+                                <td>14:28:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td><strong>Mr. Robot's Army</strong></td>
+                                <td><span class="score">2950</span></td>
+                                <td>21 / 42</td>
+                                <td>14:25:15</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td><strong>White Rose Collective</strong></td>
+                                <td><span class="score">2750</span></td>
+                                <td>19 / 42</td>
+                                <td>14:22:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td><strong>Cyber Assassins</strong></td>
+                                <td><span class="score">2580</span></td>
+                                <td>18 / 42</td>
+                                <td>14:20:45</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td><strong>Code Ninjas Vietnam</strong></td>
+                                <td><span class="score">2450</span></td>
+                                <td>17 / 42</td>
+                                <td>14:18:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td><strong>Anonymous Hackers</strong></td>
+                                <td><span class="score">2320</span></td>
+                                <td>16 / 42</td>
+                                <td>14:15:50</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td><strong>Red Hat Renegades</strong></td>
+                                <td><span class="score">2150</span></td>
+                                <td>15 / 42</td>
+                                <td>14:12:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>11</td>
+                                <td><strong>Linux Warriors</strong></td>
+                                <td><span class="score">2010</span></td>
+                                <td>14 / 42</td>
+                                <td>14:10:15</td>
+                            </tr>
+
+                            <tr>
+                                <td>12</td>
+                                <td><strong>Binary Breakers</strong></td>
+                                <td><span class="score">1890</span></td>
+                                <td>13 / 42</td>
+                                <td>14:08:40</td>
+                            </tr>
+
+                            <tr>
+                                <td>13</td>
+                                <td><strong>Crypto Kings</strong></td>
+                                <td><span class="score">1750</span></td>
+                                <td>12 / 42</td>
+                                <td>14:05:25</td>
+                            </tr>
+
+                            <tr>
+                                <td>14</td>
+                                <td><strong>Exploit Masters</strong></td>
+                                <td><span class="score">1620</span></td>
+                                <td>11 / 42</td>
+                                <td>14:02:50</td>
+                            </tr>
+
+                            <tr>
+                                <td>15</td>
+                                <td><strong>Firewall Phantoms</strong></td>
+                                <td><span class="score">1480</span></td>
+                                <td>10 / 42</td>
+                                <td>13:58:15</td>
+                            </tr>
+
+                            <tr>
+                                <td>16</td>
+                                <td><strong>SQL Injection Squad</strong></td>
+                                <td><span class="score">1350</span></td>
+                                <td>9 / 42</td>
+                                <td>13:55:40</td>
+                            </tr>
+
+                            <tr>
+                                <td>17</td>
+                                <td><strong>Reverse Engineers</strong></td>
+                                <td><span class="score">1220</span></td>
+                                <td>8 / 42</td>
+                                <td>13:50:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>18</td>
+                                <td><strong>Steganography Experts</strong></td>
+                                <td><span class="score">1090</span></td>
+                                <td>7 / 42</td>
+                                <td>13:45:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>19</td>
+                                <td><strong>Network Ninjas</strong></td>
+                                <td><span class="score">950</span></td>
+                                <td>6 / 42</td>
+                                <td>13:40:15</td>
+                            </tr>
+
+                            <tr>
+                                <td>20</td>
+                                <td><strong>Forensics Fighters</strong></td>
+                                <td><span class="score">820</span></td>
+                                <td>5 / 42</td>
+                                <td>13:35:45</td>
+                            </tr>
+
+                            <tr>
+                                <td>21</td>
+                                <td><strong>Web Warriors</strong></td>
+                                <td><span class="score">750</span></td>
+                                <td>5 / 42</td>
+                                <td>13:30:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>22</td>
+                                <td><strong>Penetration Pros</strong></td>
+                                <td><span class="score">680</span></td>
+                                <td>4 / 42</td>
+                                <td>13:25:50</td>
+                            </tr>
+
+                            <tr>
+                                <td>23</td>
+                                <td><strong>CTF Champions</strong></td>
+                                <td><span class="score">600</span></td>
+                                <td>4 / 42</td>
+                                <td>13:20:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>24</td>
+                                <td><strong>Cyber Security Hub</strong></td>
+                                <td><span class="score">520</span></td>
+                                <td>3 / 42</td>
+                                <td>13:15:10</td>
+                            </tr>
+
+                            <tr>
+                                <td>25</td>
+                                <td><strong>Innovation Hackers</strong></td>
+                                <td><span class="score">450</span></td>
+                                <td>3 / 42</td>
+                                <td>13:10:40</td>
+                            </tr>
+
+                            <tr>
+                                <td>26</td>
+                                <td><strong>Packet Smashers</strong></td>
+                                <td><span class="score">380</span></td>
+                                <td>2 / 42</td>
+                                <td>13:05:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>27</td>
+                                <td><strong>Zero Day Squad</strong></td>
+                                <td><span class="score">320</span></td>
+                                <td>2 / 42</td>
+                                <td>13:00:15</td>
+                            </tr>
+
+                            <tr>
+                                <td>28</td>
+                                <td><strong>Script Kiddies Pro</strong></td>
+                                <td><span class="score">250</span></td>
+                                <td>2 / 42</td>
+                                <td>12:55:30</td>
+                            </tr>
+
+                            <tr>
+                                <td>29</td>
+                                <td><strong>Terminal Ninjas</strong></td>
+                                <td><span class="score">180</span></td>
+                                <td>1 / 42</td>
+                                <td>12:50:45</td>
+                            </tr>
+
+                            <tr>
+                                <td>30</td>
+                                <td><strong>Security Guardians</strong></td>
+                                <td><span class="score">100</span></td>
+                                <td>1 / 42</td>
+                                <td>12:45:20</td>
+                            </tr>
+
+                            <tr>
+                                <td>31</td>
+                                <td><strong>Code Explorers</strong></td>
+                                <td><span class="score">50</span></td>
+                                <td>0 / 42</td>
+                                <td>12:30:50</td>
+                            </tr>
+
+                            <tr>
+                                <td>32</td>
+                                <td><strong>Learning Squad</strong></td>
+                                <td><span class="score">0</span></td>
+                                <td>0 / 42</td>
+                                <td>Chưa bắt đầu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Notes Section -->
+            <section>
+                <h2>📊 Ghi Chú Về Bảng Xếp Hạng</h2>
+                <div class="info-cards">
+                    <div class="card">
+                        <h3>🔄 Cập Nhật Tự Động</h3>
+                        <p>
+                            Bảng xếp hạng được cập nhật <strong>tự động mỗi 5 phút</strong> khi có đội 
+                            submit flag mới. Bạn có thể refresh trang để xem cập nhật mới nhất.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 Tính Toán Điểm</h3>
+                        <p>
+                            Điểm được tính dựa trên tổng của tất cả challenge đã giải. 
+                            Nếu hai đội có cùng điểm, đội nào giải được first sẽ xếp cao hơn.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🏆 Giải Thưởng Top 3</h3>
+                        <p>
+                            <strong>🥇 Top 1:</strong> 10 Triệu + Chứng chỉ<br>
+                            <strong>🥈 Top 2:</strong> 6 Triệu + Chứng chỉ<br>
+                            <strong>🥉 Top 3:</strong> 3 Triệu + Chứng chỉ
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>📝 Cách Đọc Bảng</h3>
+                        <p>
+                            • <strong>Rank:</strong> Vị trí xếp hạng (1 là nhất)<br>
+                            • <strong>Tên Đội:</strong> Tên đội tham gia<br>
+                            • <strong>Điểm:</strong> Tổng điểm hiện tại<br>
+                            • <strong>Challenge Giải:</strong> Số challenge đã giải / tổng số challenge
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Divider -->
+            <div class="divider"></div>
+
+            <!-- Bottom CTA -->
+            <section style="text-align: center; padding: 2rem;">
+                <h2>Bạn Muốn Tham Gia?</h2>
+                <p style="margin-bottom: 1.5rem;">
+                    Đăng ký đội của bạn ngay hôm nay và bắt đầu hành trình trở thành hacker nhân danh fsociety!
+                </p>
+                <div>
+                    <a href="index.html" class="btn">Xem Chi Tiết Sự Kiện</a>
+                    <a href="rules.html" class="btn btn-secondary">Đọc Luật Chơi</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 fsociety CTF Event. All rights reserved. | "We are fsociety." | 
+           <a href="#" style="border-bottom: none;">Live Updates</a></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
